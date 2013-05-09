@@ -4,7 +4,7 @@ module Cohber
     module Orders
 
       def order(*args)
-        response = post("cofApi.php", args, true, true)
+        response = post("default.aspx", args, true, true)
         parsed = MultiXml.parse(response.body)
         root = parsed["root"]
         reply = root["orderReply"] unless root.nil?

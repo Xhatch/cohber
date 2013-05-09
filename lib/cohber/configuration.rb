@@ -28,8 +28,8 @@ module Cohber
     DEFAULT_ADAPTER = Faraday.default_adapter
 
     # Endpoints
-    DEFAULT_ENDPOINT_DEV = 'http://staging.harvestDigitalPrinting.com/integration/'.freeze
-    DEFAULT_ENDPOINT = 'https://harvestDigitalPrinting.com/integration/'.freeze
+    DEFAULT_ENDPOINT_DEV = 'http://orders.cohber.com/snapstagram/'.freeze
+    DEFAULT_ENDPOINT = 'http://orders.cohber.com/snapstagram/'.freeze
 
     # The response format appended to the path and sent in the 'Accept' header if none is set
     DEFAULT_FORMAT = ""#:xml
