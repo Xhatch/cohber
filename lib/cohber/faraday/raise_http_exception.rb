@@ -8,13 +8,13 @@ module FaradayMiddleware
       @app.call(env).on_complete do |response|
         case response[:status].to_i
         when 400
-          raise Jondo::BadRequest, error_message_400(response)
+          raise Cohber::BadRequest, error_message_400(response)
         when 404
-          raise Jondo::NotFound, error_message_400(response)
+          raise Cohber::NotFound, error_message_400(response)
         when 500
-          raise Jondo::InternalServerError, error_message_500(response, "Something is technically wrong.")
+          raise Cohber::InternalServerError, error_message_500(response, "Something is technically wrong.")
         when 503
-          raise Jondo::ServiceUnavailable, error_message_500(response, "Jondo is rate limiting your requests.")
+          raise Cohber::ServiceUnavailable, error_message_500(response, "Cohber is rate limiting your requests.")
         end
       end
     end

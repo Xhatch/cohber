@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/jondo/version', __FILE__)
+require File.expand_path('../lib/cohber/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.add_runtime_dependency('faraday', '~> 0.7')
@@ -14,17 +14,17 @@ Gem::Specification.new do |gem|
 
 ********************************************************************************
 eos
-  gem.name          = "jondo"
+  gem.name          = "cohber"
   gem.version       = "0.0.1"
   gem.authors       = ["Jason Dinsmore"]
   gem.email         = ["jason@xhatch.com"]
-  gem.description   = %q{A simple client for the JONDO fulfillment API}
-  gem.summary       = %q{A simple client for the JONDO fulfillment API}
+  gem.description   = %q{A simple (unofficial) client for the Cohber fulfillment API}
+  gem.summary       = %q{A simple (unofficial) client for the Cohber fulfillment API}
   gem.homepage      = "http://xhatch.com"
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
   gem.platform = Gem::Platform::RUBY
-  gem.version = Jondo::VERSION.dup
+  gem.version = Cohber::VERSION.dup
 end

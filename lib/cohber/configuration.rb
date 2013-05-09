@@ -4,13 +4,13 @@ require 'multi_xml'
 
 require File.expand_path('../version', __FILE__)
 
-module Jondo
+module Cohber
   # Defines constants and methods related to configuration
   module Configuration
     
     MultiXml.parser = :nokogiri
 
-    # An array of valid keys in the options hash when configuring a {Jondo::API}
+    # An array of valid keys in the options hash when configuring a {Cohber::API}
     VALID_OPTIONS_KEYS = [
       :adapter,
       :endpoint,
@@ -35,7 +35,7 @@ module Jondo
     DEFAULT_FORMAT = ""#:xml
 
     # The user agent that will be sent to the API endpoint if none is set
-    DEFAULT_USER_AGENT = "Jondo Ruby Gem #{Jondo::VERSION}".freeze
+    DEFAULT_USER_AGENT = "Cohber Ruby Gem #{Cohber::VERSION}".freeze
 
     # By default, don't use a proxy server
     DEFAULT_PROXY = nil

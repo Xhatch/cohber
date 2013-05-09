@@ -1,4 +1,4 @@
-module Jondo
+module Cohber
   # Defines HTTP request methods
   module Request
     # Perform an HTTP GET request

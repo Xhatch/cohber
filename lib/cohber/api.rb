@@ -1,7 +1,7 @@
 require File.expand_path('../connection', __FILE__)
 require File.expand_path('../request', __FILE__)
 
-module Jondo
+module Cohber
   # @private
   class API
     # @private
@@ -9,7 +9,7 @@ module Jondo
 
     # Creates a new API
     def initialize(options={})
-      options = Jondo.options.merge(options)
+      options = Cohber.options.merge(options)
       Configuration::VALID_OPTIONS_KEYS.each do |key|
         send("#{key}=", options[key])
       end
