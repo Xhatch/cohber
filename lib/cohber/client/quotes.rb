@@ -15,7 +15,6 @@ module Cohber
         begin
           # conn = Faraday.new(:url => 'http://dinjas.dyndns.org') do |faraday|;
           conn = Faraday.new(:url => 'http://orders.cohber.com/snapstagram/') do |faraday|
-            # faraday.request  :xml             # form-encode POST params
             faraday.response :logger                  # log requests to STDOUT
             faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
           end
