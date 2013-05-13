@@ -45,7 +45,7 @@ module Cohber
           reply = root["quoteReply"] unless root.nil?
           reply
         rescue Exception => ex
-          puts "EXCEPTION2: #{ex.inspect}"
+          puts "EXCEPTION4: #{ex.inspect}"
         end
       end
 
