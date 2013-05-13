@@ -12,12 +12,13 @@ module Cohber
         #   put "REQUEST:: #{req.inspect}"
         # end
         conn = Faraday.new('http://orders.cohber.com/snapstagram', ssl: {verify: false}) do |builder|
-          builder.use FaradayMiddleware::ParseXml, content_type: 'application/xml'
+          builder.use FaradayMiddleware::ParseXml
           builder.request  :url_encoded
           builder.response :logger
           builder.adapter  :net_http
         end
         conn.headers["Accept"] = 'application/xml'
+        conn.headers["Content-Type"] = 'application/xml'
         response = conn.post '/default.aspx', args
 
         puts "RESPONSE: #{response.inspect}"
