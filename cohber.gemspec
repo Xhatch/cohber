@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 require File.expand_path('../lib/cohber/version', __FILE__)
-require 'active_support/core_ext/array/conversions'
 
 Gem::Specification.new do |gem|
   gem.add_runtime_dependency('faraday', '~> 0.7')
