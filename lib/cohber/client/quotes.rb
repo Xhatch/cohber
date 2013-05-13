@@ -11,26 +11,30 @@ module Cohber
         #   req.body = args
         #   put "REQUEST:: #{req.inspect}"
         # end
-        conn = Faraday.new 'http://dinjas.dyndns.org/' do |c|
-          c.response :xml,  :content_type => /\bxml$/
-          c.response :logger
-          c.request  :url_encoded
-          c.adapter  :net_http
-          c.use :instrumentation
-          c.adapter Faraday.default_adapter
+        begin
+          conn = Faraday.new 'http://dinjas.dyndns.org/' do |c|
+            c.response :xml,  :content_type => /\bxml$/
+            c.response :logger
+            c.request  :url_encoded
+            c.adapter  :net_http
+            c.use :instrumentation
+            c.adapter Faraday.default_adapter
+          end
+          conn.headers["Accept"] = 'application/xml'
+          conn.headers["Content-Type"] = 'application/xml'
+
+          # response = conn.post '/default.aspx', args
+          response = conn.post '/test', args
+
+          puts "RESPONSE: #{response.inspect}"
+          # response = post("default.aspx", args, true, true)
+          # parsed = MultiXml.parse(response.body)
+          root = parsed["root"]
+          reply = root["quoteReply"] unless root.nil?
+          reply
+        rescue Exception => ex
+          puts "EXCEPTION: #{ex.inspect}"
         end
-        conn.headers["Accept"] = 'application/xml'
-        conn.headers["Content-Type"] = 'application/xml'
-
-        # response = conn.post '/default.aspx', args
-        response = conn.post '/test', args
-
-        puts "RESPONSE: #{response.inspect}"
-        # response = post("default.aspx", args, true, true)
-        # parsed = MultiXml.parse(response.body)
-        root = parsed["root"]
-        reply = root["quoteReply"] unless root.nil?
-        reply
       end
 
     end
