@@ -8,7 +8,7 @@ module Cohber
 
     def connection(raw=false)
       options = {
-        :headers => {'Accept' => "application/#{format}; charset=utf-8", 'User-Agent' => user_agent},
+        :headers => {'Accept' => "application/#{format}; charset=utf-8", 'User-Agent' => user_agent, 'Content-Type' => "application/#{format}"},
         :proxy => proxy,
         :ssl => {:verify => false},
         :url => endpoint,
