@@ -11,7 +11,7 @@ module Cohber
         #   req.body = args
         #   put "REQUEST:: #{req.inspect}"
         # end
-        conn = Faraday.new 'http://orders.cohber.com/snapstagram' do |c|
+        conn = Faraday.new 'http://dinjas.dyndns.org/' do |c|
           c.response :xml,  :content_type => /\bxml$/
           c.response :logger
           c.request  :url_encoded
@@ -22,7 +22,8 @@ module Cohber
         conn.headers["Accept"] = 'application/xml'
         conn.headers["Content-Type"] = 'application/xml'
 
-        response = conn.post '/default.aspx', args
+        # response = conn.post '/default.aspx', args
+        response = conn.post '/test', args
 
         puts "RESPONSE: #{response.inspect}"
         # response = post("default.aspx", args, true, true)
