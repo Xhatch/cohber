@@ -33,7 +33,7 @@ module Cohber
 
         begin
           # response = conn.post '/default.aspx', args
-          logger.debug ("args: #{args.inspect}")
+          puts ("args: #{args.inspect}")
           response = conn.post '/test', args
         rescue Exception => ex
           puts "EXCEPTION3: #{ex.inspect}"
