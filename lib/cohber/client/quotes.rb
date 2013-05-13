@@ -17,9 +17,9 @@ module Cohber
           builder.adapter  :net_http
         end
 
-        resp = conn.post '/default.aspx', args
+        response = conn.post '/default.aspx', args
 
-        puts resp.body
+        puts "RESPONSE: #{response.inspect}"
         # response = post("default.aspx", args, true, true)
         parsed = MultiXml.parse(response.body)
         root = parsed["root"]
