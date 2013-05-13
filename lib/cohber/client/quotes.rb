@@ -13,17 +13,22 @@ module Cohber
         # end
         conn = nil
         begin
-          conn = Faraday.new 'http://dinjas.dyndns.org/' do |c|
-            c.response :xml,  :content_type => /\bxml$/
-            c.response :logger
-            c.request  :url_encoded
-            c.adapter  :net_http
-            c.use :instrumentation
-            c.headers["Accept"] = 'application/xml'
-            c.headers["Content-Type"] = 'application/xml'
-            c.adapter Faraday.default_adapter
-            c.body = args
+          conn = Faraday.new(:url => 'http://dinjas.dyndns.org') do |faraday|
+            faraday.request  :xml             # form-encode POST params
+            faraday.response :logger                  # log requests to STDOUT
+            faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
           end
+          # conn = Faraday.new 'http://dinjas.dyndns.org' do |c|
+          #   c.response :xml,  :content_type => /\bxml$/
+          #   c.response :logger
+          #   c.request  :url_encoded
+          #   c.adapter  :net_http
+          #   c.use :instrumentation
+          #   c.headers["Accept"] = 'application/xml'
+          #   c.headers["Content-Type"] = 'application/xml'
+          #   c.adapter Faraday.default_adapter
+          #   c.body = args
+          # end
         rescue Exception => ex
           puts "EXCEPTION: #{ex.inspect}"
         end
@@ -36,7 +41,12 @@ module Cohber
         begin
           # response = conn.post '/default.aspx', args
           puts ("args: #{args.inspect}")
-          response = conn.post '/test', nil
+          # response = conn.post '/test', nil
+          response = conn.post do |req|
+            req.url '/test'
+            req.headers['Content-Type'] = 'application/xml'
+            req.body = args
+          end
         rescue Exception => ex
           puts "EXCEPTION3: #{ex.inspect}"
         end
