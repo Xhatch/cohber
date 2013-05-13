@@ -32,7 +32,7 @@ module Cohber
     DEFAULT_ENDPOINT = 'http://orders.cohber.com/snapstagram/'.freeze
 
     # The response format appended to the path and sent in the 'Accept' header if none is set
-    DEFAULT_FORMAT = ""#:xml
+    DEFAULT_FORMAT = :xml
 
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_USER_AGENT = "Cohber Ruby Gem #{Cohber::VERSION}".freeze
