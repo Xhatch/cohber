@@ -11,6 +11,7 @@ module Cohber
         #   req.body = args
         #   put "REQUEST:: #{req.inspect}"
         # end
+        conn = nil
         begin
           conn = Faraday.new 'http://dinjas.dyndns.org/' do |c|
             c.response :xml,  :content_type => /\bxml$/
