@@ -11,7 +11,16 @@ module Cohber
         #   req.body = args
         #   put "REQUEST:: #{req.inspect}"
         # end
-        response = post("default.aspx", args, true, true)
+        conn = Faraday.new('http://orders.cohber.com/snapstagram/', ssl: {verify: false}) do |builder|
+          builder.request  :url_encoded
+          builder.response :logger
+          builder.adapter  :net_http
+        end
+
+        resp = conn.post '/default.aspx', args
+
+        puts resp.body
+        # response = post("default.aspx", args, true, true)
         parsed = MultiXml.parse(response.body)
         root = parsed["root"]
         reply = root["quoteReply"] unless root.nil?
