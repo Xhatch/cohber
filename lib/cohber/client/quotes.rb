@@ -11,11 +11,10 @@ module Cohber
         #   req.body = args
         #   put "REQUEST:: #{req.inspect}"
         # end
-        conn = Faraday.new('http://orders.cohber.com/snapstagram', ssl: {verify: false}) do |c|
+        conn = Faraday.new 'http://orders.cohber.com/snapstagram' do |c|
           c.response :xml,  :content_type => /\bxml$/
-          c.response :logger          
+          c.response :logger
           c.request  :url_encoded
-          c.request  :xml
           c.adapter  :net_http
           c.use :instrumentation
           c.adapter Faraday.default_adapter
