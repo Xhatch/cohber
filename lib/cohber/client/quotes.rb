@@ -20,20 +20,32 @@ module Cohber
             c.use :instrumentation
             c.adapter Faraday.default_adapter
           end
+        rescue Exception => ex
+          puts "EXCEPTION: #{ex.inspect}"
+        end
+
+        begin
           conn.headers["Accept"] = 'application/xml'
           conn.headers["Content-Type"] = 'application/xml'
+        rescue Exception => ex
+          puts "EXCEPTION2: #{ex.inspect}"
+        end
 
+        begin
           # response = conn.post '/default.aspx', args
           response = conn.post '/test', args
-
+        rescue Exception => ex
+          puts "EXCEPTION3: #{ex.inspect}"
+        end
+        begin
           puts "RESPONSE: #{response.inspect}"
           # response = post("default.aspx", args, true, true)
-          # parsed = MultiXml.parse(response.body)
+          parsed = MultiXml.parse(response.body)
           root = parsed["root"]
           reply = root["quoteReply"] unless root.nil?
           reply
         rescue Exception => ex
-          puts "EXCEPTION: #{ex.inspect}"
+          puts "EXCEPTION2: #{ex.inspect}"
         end
       end
 
