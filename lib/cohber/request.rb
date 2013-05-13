@@ -1,5 +1,4 @@
 module Cohber
-  require 'active_support/core_ext/array/conversions'
   # Defines HTTP request methods
   module Request
     # Perform an HTTP GET request
