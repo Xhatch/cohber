@@ -18,15 +18,16 @@ module Cohber
             c.request  :url_encoded
             c.adapter  :net_http
             c.use :instrumentation
+            c.headers["Accept"] = 'application/xml'
+            c.headers["Content-Type"] = 'application/xml'
             c.adapter Faraday.default_adapter
+            c.body = args
           end
         rescue Exception => ex
           puts "EXCEPTION: #{ex.inspect}"
         end
 
         begin
-          conn.headers["Accept"] = 'application/xml'
-          conn.headers["Content-Type"] = 'application/xml'
         rescue Exception => ex
           puts "EXCEPTION2: #{ex.inspect}"
         end
@@ -34,7 +35,7 @@ module Cohber
         begin
           # response = conn.post '/default.aspx', args
           puts ("args: #{args.inspect}")
-          response = conn.post '/test', args
+          response = conn.post '/test', nil
         rescue Exception => ex
           puts "EXCEPTION3: #{ex.inspect}"
         end
