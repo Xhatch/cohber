@@ -4,7 +4,12 @@ module Cohber
     module Quotes
 
       def quote(*args)
-        response = post("default.aspx", args, :content_type => 'application/xml', true)
+        response = Faraday.post do |req|
+          req.url 'default.aspx'
+          req.headers['Content-Type'] = 'application/xml'
+          req.body = args
+        end
+        # response = post("default.aspx", args, :content_type => 'application/xml', true)
         parsed = MultiXml.parse(response.body)
         root = parsed["root"]
         reply = root["quoteReply"] unless root.nil?
