@@ -7,6 +7,7 @@ module Cohber
     private
 
     def connection(raw=false)
+      puts "format is #{format}"
       options = {
         :headers => {'Accept' => "application/#{format}; charset=utf-8", 'User-Agent' => user_agent, 'Content-Type' => "application/#{format}"},
         :proxy => proxy,
@@ -29,3 +30,10 @@ module Cohber
     end
   end
 end
+
+
+
+# conn = Faraday.new(:url => 'http://orders.cohber.com/snapstagram/') do |faraday|
+#   faraday.response :logger                  # log requests to STDOUT
+#   faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+# end
