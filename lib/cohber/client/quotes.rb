@@ -27,7 +27,7 @@ module Cohber
 
         puts "RESPONSE: #{response.inspect}"
         # response = post("default.aspx", args, true, true)
-        parsed = MultiXml.parse(response.body)
+        # parsed = MultiXml.parse(response.body)
         root = parsed["root"]
         reply = root["quoteReply"] unless root.nil?
         reply
