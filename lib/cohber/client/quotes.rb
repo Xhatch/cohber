@@ -14,7 +14,7 @@ module Cohber
         conn = nil
         begin
           conn = Faraday.new(:url => 'http://dinjas.dyndns.org') do |faraday|
-            faraday.request  :xml             # form-encode POST params
+            # faraday.request  :xml             # form-encode POST params
             faraday.response :logger                  # log requests to STDOUT
             faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
           end
@@ -44,6 +44,7 @@ module Cohber
           # response = conn.post '/test', nil
           response = conn.post do |req|
             req.url '/test'
+            req.headers['Accept'] = 'application/xml'
             req.headers['Content-Type'] = 'application/xml'
             req.body = args
           end
