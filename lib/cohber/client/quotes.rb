@@ -5,7 +5,7 @@ module Cohber
 
       def quote(*args)
         response = Faraday.post do |req|
-          req.url 'default.aspx'
+          req.url 'http://orders.cohber.com/snapstagram/default.aspx'
           req.headers['Content-Type'] = 'application/xml'
           req.headers['Accempt'] = 'application/xml'
           req.body = args
