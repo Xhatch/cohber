@@ -9,7 +9,8 @@ module Cohber
         #   req.headers['Content-Type'] = 'application/xml'
         #   req.body = args
         # end
-        response = post("default.aspx", args, true, true)
+        # response = post("default.aspx", args, true, true)
+        response = post("default.aspx", args, {'Accept' => 'application/xml', 'Content-Type' => 'application/xml'}, true)
         parsed = MultiXml.parse(response.body)
         root = parsed["root"]
         reply = root["quoteReply"] unless root.nil?
