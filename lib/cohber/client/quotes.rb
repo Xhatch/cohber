@@ -4,7 +4,7 @@ module Cohber
     module Quotes
 
       def quote(*args)
-        response = post("default.aspx", args, true, true)
+        response = post("default.aspx", args, :content_type => 'application/xml', true)
         parsed = MultiXml.parse(response.body)
         root = parsed["root"]
         reply = root["quoteReply"] unless root.nil?
