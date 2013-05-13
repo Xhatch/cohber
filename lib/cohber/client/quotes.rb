@@ -46,7 +46,7 @@ module Cohber
             req.url '/test'
             req.headers['Accept'] = 'application/xml'
             req.headers['Content-Type'] = 'application/xml'
-            req.body = args
+            req.body = args[0]
           end
         rescue Exception => ex
           puts "EXCEPTION3: #{ex.inspect}"
