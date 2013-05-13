@@ -48,7 +48,7 @@ module Cohber
           #   req.headers['Content-Type'] = 'application/xml'
           #   req.body = args[0]
           # end
-          response = post '/default.aspx', args
+          response = post '/default.aspx', args[0], true, true
         rescue Exception => ex
           puts "EXCEPTION3: #{ex.inspect}"
         end
