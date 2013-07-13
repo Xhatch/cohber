@@ -3,12 +3,9 @@ module Cohber
     # Defines methods related to placing an order
     module Orders
 
-      def order(*args)
-        response = post("default.aspx", args, true, true)
+      def order(xml)
+        response = post 'default.aspx', xml, true, true
         parsed = MultiXml.parse(response.body)
-        root = parsed["root"]
-        reply = root["orderReply"] unless root.nil?
-        reply
       end
 
     end
